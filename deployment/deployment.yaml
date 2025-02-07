@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-rest-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-rest-app
+  template:
+    metadata:
+      labels:
+        app: spring-rest-app
+    spec:
+      containers:
+        - name: restserv
+          image: restserv
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
